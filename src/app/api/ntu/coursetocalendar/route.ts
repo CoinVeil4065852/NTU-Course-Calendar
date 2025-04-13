@@ -18,6 +18,6 @@ export async function POST(request: Request) {
       },
     });
   } catch (error) {
-    return Response.json({ error: "login error" }, { status: 500 });
+    return Response.json({ error }, { status: 500 });
   }
 }
