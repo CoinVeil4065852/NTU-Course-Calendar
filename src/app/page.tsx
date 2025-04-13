@@ -84,7 +84,7 @@ export default function Home() {
           </Typography>
 
           <Typography level="body-md" >
-            恭喜您，您已成功轉換並取得 ntu_calendar.ics 檔案！接下來，您可以將該檔案匯入至您的 Google Calendar或任何支援 .ics 的行事曆，方便您管理學期活動與重要日程。
+            恭喜您，您已成功轉換並取得 ntu_calendar.ics 檔案！接下來，您可以將該檔案匯入至您的 Google Calendar 或任何支援 .ics 的行事曆，方便您管理學期活動與重要日程。
           </Typography>
 
           <Typography level="title-md" gutterBottom>
