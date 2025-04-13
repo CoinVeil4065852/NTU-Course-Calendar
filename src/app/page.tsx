@@ -1,6 +1,7 @@
 "use client"
 import { Stack, Button, Typography, FormControl, FormLabel, Box, CircularProgress, Select, Option, Input, FormHelperText, List, ListItem, Link } from "@mui/joy";
 import { useState } from "react";
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 
 export default function Home() {
@@ -52,7 +53,16 @@ export default function Home() {
   return (
     <Box ml="auto" mr="auto" mt="12pt" maxWidth={450}>
       <Stack spacing={2} width="100%">
-        <Typography level="title-lg">臺大課程行事曆</Typography>
+        <Typography level="title-lg" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          臺大課程行事曆
+          <Link
+            href="https://github.com/CoinVeil4065852/NTU-Course-Calendar"
+            rel="noopener"
+            sx={{ display: 'flex', alignItems: 'center' }}
+          >
+            <GitHubIcon color="primary" fontSize="small" />
+          </Link>
+        </Typography>
         <Typography level="body-md" >
           這是一個可以將臺大課表轉換成行事曆的工具，請在下方輸入你的計中帳號密碼。
         </Typography>
