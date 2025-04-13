@@ -1,4 +1,4 @@
-import { courseToCalendar } from "@/app/utils/CourseToCalendar";
+import { courseToCalendar } from "@/app/utils/courseToCalendar";
 import { getFinalCourses, login } from "@/app/utils/ntuCourseApi";
 
 export async function POST(request: Request) {
