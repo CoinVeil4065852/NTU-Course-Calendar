@@ -1,4 +1,4 @@
-[Demo](https://ntu-course-calendar.vercel.app/)
+## [Demo](https://ntu-course-calendar.vercel.app/)
 
 # NTU Course Schedule to iCal Converter
 
@@ -6,7 +6,7 @@ A web application that converts a student's NTU course schedule into an iCal (.i
 
 # 台大課表轉 iCal 工具
 
-一個可以將台灣大學學生課表轉換為 iCal (.ics) 檔案的網頁應用程式。產生的檔案可匯入 Google 行事曆、Apple 行事曆、Outlook 等行事曆工具。
+## 一個可以將台灣大學學生課表轉換為 iCal (.ics) 檔案的網頁應用程式。產生的檔案可匯入 Google 行事曆、Apple 行事曆、Outlook 等行事曆工具。
 
 ## Features
 
@@ -40,6 +40,8 @@ A web application that converts a student's NTU course schedule into an iCal (.i
 4. 下載 `.ics` 檔案
 5. 匯入至你常用的行事曆工具
 
+---
+
 ## Disclaimer
 
 This project is not affiliated with or endorsed by National Taiwan University.  
@@ -49,6 +51,8 @@ CINC credentials are not stored and are only used temporarily to fetch course da
 
 本專案與台灣大學無任何關聯。  
 使用者的登入資訊不會被儲存，僅用於一次性的資料擷取。
+
+---
 
 ## Development
 
