@@ -6,7 +6,9 @@ A web application that converts a student's NTU course schedule into an iCal (.i
 
 # 台大課表轉 iCal 工具
 
-## 一個可以將台灣大學學生課表轉換為 iCal (.ics) 檔案的網頁應用程式。產生的檔案可匯入 Google 行事曆、Apple 行事曆、Outlook 等行事曆工具。
+一個可以將台灣大學學生課表轉換為 iCal (.ics) 檔案的網頁應用程式。產生的檔案可匯入 Google 行事曆、Apple 行事曆、Outlook 等行事曆工具。
+
+---
 
 ## Features
 
