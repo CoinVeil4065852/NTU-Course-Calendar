@@ -54,23 +54,23 @@ type WeeklyScheduleProps = {
 };
 
 const ScheduleCard: React.FC<ScheduleCardProps> = ({ course }) => {
-    const verticalPadding=4
-    const top = (Object.entries(scheduleSlots).findIndex((it) => it[0] === course.intervals[0])) * intervalHeight + 30+verticalPadding;
-    const height = (course.intervals.length) * intervalHeight-verticalPadding;
+    const verticalPadding = 4
+    const top = (Object.entries(scheduleSlots).findIndex((it) => it[0] === course.intervals[0])) * intervalHeight + 30 + verticalPadding;
+    const height = (course.intervals.length) * intervalHeight - verticalPadding;
 
     return (
         <Card
             variant="soft"
             color="primary"
             sx={{
-                
+
                 position: 'absolute',
                 top,
                 left: 4,
                 right: 4,
                 height,
                 p: { xs: 0.5, sm: 1 },
-                fontSize: { xs: '0.7rem', sm: '0.9rem' },
+                fontSize: { xs: '0.5rem', sm: '0.7rem' },
                 overflow: 'hidden',
                 backgroundColor: 'primary.softBg',
                 display: 'flex',
@@ -79,9 +79,11 @@ const ScheduleCard: React.FC<ScheduleCardProps> = ({ course }) => {
                 borderRadius: 'lg',
             }}
         >
-            <CardContent sx={{ overflow: 'hidden' }}>
-                <Typography level="title-sm" sx={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{course.name}</Typography>
-                <Typography level="body-sm" noWrap>{course.location || '—'}</Typography>
+            <CardContent sx={{ display: "flex", flexDirection: "column", overflow: 'hidden' }}>
+
+                <Typography level="title-sm" sx={{ flex: 1, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'wrap' }}>{course.name}</Typography>
+
+                <Typography level="body-sm" noWrap>{course.location}</Typography>
                 <Typography level="body-sm">
                     {course.start.hour}:{course.start.minute.toString().padStart(2, '0')} - {course.end.hour}:{course.end.minute.toString().padStart(2, '0')}
                 </Typography>
@@ -95,7 +97,7 @@ const WeeklySchedule: React.FC<WeeklyScheduleProps> = ({ courses }) => {
 
     return (
         <Box sx={{ display: 'flex', maxWidth: 850, width: '100%', mx: 'auto', borderRadius: 'lg', overflow: 'hidden', border: '1px solid #ccc' }}>
-            <Box sx={{ width: 100, borderRight: '1px solid #ccc', backgroundColor: '#fafafa' }}>
+            <Box sx={{ borderRight: '1px solid #ccc', backgroundColor: '#fafafa' }}>
                 <Box sx={{ height: 30, display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #ccc', fontWeight: 'bold' }}>
                     <Typography level="title-sm">節次</Typography>
                 </Box>
