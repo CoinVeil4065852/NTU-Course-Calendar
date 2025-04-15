@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography, Card, CardContent } from '@mui/joy';
+import { IntervalKey } from './utils/types';
 
 
 
@@ -17,7 +18,7 @@ import { Box, Typography, Card, CardContent } from '@mui/joy';
 //TODO needs refactor
 const days = ['一', '二', '三', '四', '五'];
 const intervalHeight = 100; // increased height
-const scheduleSlots: Record<interval, { start: { hour: number; minute: number }; end: { hour: number; minute: number } }> = {
+const scheduleSlots: Record<IntervalKey, { start: { hour: number; minute: number }; end: { hour: number; minute: number } }> = {
     "0": { start: { hour: 7, minute: 10 }, end: { hour: 8, minute: 0 } },
     "1": { start: { hour: 8, minute: 10 }, end: { hour: 9, minute: 0 } },
     "2": { start: { hour: 9, minute: 10 }, end: { hour: 10, minute: 0 } },
@@ -34,12 +35,12 @@ const scheduleSlots: Record<interval, { start: { hour: number; minute: number };
     "C": { start: { hour: 20, minute: 15 }, end: { hour: 21, minute: 5 } },
     "D": { start: { hour: 21, minute: 10 }, end: { hour: 22, minute: 0 } },
 };
-type interval = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "X" | "A" | "B" | "C" | "D"
+
 type Course = {
     name: string;
     location?: string;
     weekday: number;
-    intervals: interval[],
+    intervals: IntervalKey[],
     start: { hour: number; minute: number };
     end: { hour: number; minute: number };
 };

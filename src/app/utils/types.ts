@@ -123,3 +123,5 @@ export interface Interval {
 export type IntervalsOfStartAndEndTime = {
   [key: string]: Interval;
 };
+
+export type IntervalKey= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "X" | "A" | "B" | "C" | "D"

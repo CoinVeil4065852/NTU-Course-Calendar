@@ -1,6 +1,8 @@
 import {
   GetCourseResponse,
+  IntervalKey,
   IntervalsOfStartAndEndTime,
+  Time,
 } from "@/app/utils/types";
 import ical from "ical-generator";
 
@@ -68,18 +70,27 @@ export function courseToCalendar(courseResponse: GetCourseResponse) {
   return calendar.toString();
 }
 
-
+type CourseList = {
+  name: string;
+  location: string | undefined;
+  weekday: number;
+  intervals: IntervalKey[];
+  start: Time;
+  end: Time;
+};
 
 //TODO needs refactor
-export function courseResponseToCourses(courseResponse: GetCourseResponse) {
-  let courses = [];
+export function courseResponseToCourses(
+  courseResponse: GetCourseResponse
+): CourseList[] {
+  const courses: CourseList[] = [];
   courseResponse.assignedCourses.forEach(({ course }) => {
     course.schedules.forEach((it) => {
       courses.push({
         name: course.name as string,
         location: it.classroom?.name,
         weekday: it.weekday,
-        intervals:it.intervals,
+        intervals: it.intervals as IntervalKey[],
         start: intervalsOfStartAndEndTime[it.intervals[0]].start,
         end: intervalsOfStartAndEndTime[it.intervals[it.intervals.length - 1]]
           .end,
