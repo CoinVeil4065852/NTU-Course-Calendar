@@ -67,3 +67,24 @@ export function courseToCalendar(courseResponse: GetCourseResponse) {
   });
   return calendar.toString();
 }
+
+
+
+//TODO needs refactor
+export function courseResponseToCourses(courseResponse: GetCourseResponse) {
+  let courses = [];
+  courseResponse.assignedCourses.forEach(({ course }) => {
+    course.schedules.forEach((it) => {
+      courses.push({
+        name: course.name as string,
+        location: it.classroom?.name,
+        weekday: it.weekday,
+        intervals:it.intervals,
+        start: intervalsOfStartAndEndTime[it.intervals[0]].start,
+        end: intervalsOfStartAndEndTime[it.intervals[it.intervals.length - 1]]
+          .end,
+      });
+    });
+  });
+  return courses;
+}

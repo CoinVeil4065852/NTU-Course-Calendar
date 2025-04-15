@@ -1,4 +1,4 @@
-import { courseToCalendar } from "@/app/utils/courseToCalendar";
+import { courseResponseToCourses, courseToCalendar } from "@/app/utils/courseToCalendar";
 import { getFinalCourses, login } from "@/app/utils/ntuCourseApi";
 
 export async function POST(request: Request) {
@@ -9,13 +9,11 @@ export async function POST(request: Request) {
   try {
     const NTUCourseToken = await login(username, password);
     const courseResponse = await getFinalCourses(NTUCourseToken, lang);
+    const courseList = courseResponseToCourses(courseResponse)
     const icalString = courseToCalendar(courseResponse);
-    return new Response(icalString, {
-      status: 200,
-      headers: {
-        "Content-Type": "text/calendar; charset=utf-8",
-        "Content-Disposition": 'attachment; filename="ntu_calendar.ics"',
-      },
+    return Response.json({
+      icalString,
+      courseList,
     });
   } catch (error) {
     return Response.json({ error }, { status: 500 });

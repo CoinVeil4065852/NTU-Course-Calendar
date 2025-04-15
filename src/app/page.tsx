@@ -2,6 +2,8 @@
 import { Stack, Button, Typography, FormControl, FormLabel, Box, CircularProgress, Select, Option, Input, FormHelperText, List, ListItem, Link } from "@mui/joy";
 import { useState } from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
+import WeeklySchedule from "./WeeklySchedule";
+
 
 
 export default function Home() {
@@ -11,7 +13,8 @@ export default function Home() {
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [helperText, setHelperText] = useState("")
-  const [success, setSuccess] = useState(false)
+  const [courses, setCourses] = useState([])
+  
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -31,16 +34,21 @@ export default function Home() {
         return;
       }
 
-      const blob = await res.blob();
+      const data = await res.json();
+
+      // Create a Blob for the iCal string
+      const blob = new Blob([data.icalString], { type: "text/calendar;charset=utf-8" });
       const url = window.URL.createObjectURL(blob);
 
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
-      a.download = 'ntu_calendar.ics';
+      a.download = "ntu_calendar.ics";
       a.click();
 
       window.URL.revokeObjectURL(url);
-      setSuccess(true);
+
+      setCourses(data.courseList)
+
     } catch (err) {
       setHelperText("轉換失敗，請稍候再試 Error: " + err);
     } finally {
@@ -51,7 +59,7 @@ export default function Home() {
 
 
   return (
-    <Box ml="auto" mr="auto" mt="12pt" maxWidth={450}>
+    <Box ml="auto" mr="auto" mt="12pt" maxWidth={850}>
       <Stack spacing={2} width="100%">
         <Typography level="title-lg" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           臺大課程行事曆
@@ -88,7 +96,9 @@ export default function Home() {
           </FormControl>
           <Button disabled={loading || username == "" || password == ""} onClick={handleSubmit} variant="solid">{loading ? <CircularProgress /> : "送出"}</Button>
         </Stack>
-        {success && (<>
+        {courses.length!==0 && (<>
+          <WeeklySchedule courses={courses}/>
+
           <Typography level="title-md" gutterBottom>
             NTU 行事曆匯入說明
           </Typography>
